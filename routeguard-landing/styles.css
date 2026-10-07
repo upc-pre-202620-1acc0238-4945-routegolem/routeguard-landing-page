@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* Custom Theme Variables and Utilities */
+@layer base {
+    :root {
+        --color-primary: #1E3A8A;
+        --color-secondary: #10B981;
+    }
+}
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-secondary);
+}
+
+.bg-secondary {
+    background-color: var(--color-secondary);
+}
+
+/* Custom scroll behavior and font smoothing */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
