@@ -12,9 +12,13 @@ The RouteGuard Project replaces the informal coordination of school transport (p
 
 - The main features of the product: background GPS, offline check-in and geofencing alerts.
 
-- The mobile app in action, with screenshots of the home and routes screens.
+- The subscription plans: a free **Basic** plan for independent drivers and a **Flota Pro** plan (S/ 49.99 per month) for administrators with several vehicles, with automatic geofencing alerts, advanced reports and a panic button.
 
-- The RouteGolem team behind the project.
+- The mobile app in action, with mockups of the main dashboard and the stops and tracking screens.
+
+- A user validation video (embedded from YouTube) showing a real user trying RouteGuard.
+
+- The RouteGolem team behind the project, plus a link to the official repository with the full project documentation.
 
 - A light and dark theme switcher whose preference is saved in the browser.
 
@@ -34,20 +38,40 @@ The RouteGuard Project replaces the informal coordination of school transport (p
 - Solution URL : [https://upc-pre-202620-1acc0238-4945-routegolem.github.io/routeguard-landing-page/](https://upc-pre-202620-1acc0238-4945-routegolem.github.io/routeguard-landing-page/)
 - Project report : [https://github.com/upc-pre-202620-1acc0238-4945-routegolem/routeguard-report](https://github.com/upc-pre-202620-1acc0238-4945-routegolem/routeguard-report)
 
+### The RouteGuard ecosystem
+This repository is only the landing page. The rest of the project lives in sibling repositories of the same organization:
+
+| Repository | What it contains |
+|---|---|
+| [routeguard-report](https://github.com/upc-pre-202620-1acc0238-4945-routegolem/routeguard-report) | Project report: user stories, diagrams, bounded contexts and design decisions |
+| [routeguard-web-services](https://github.com/upc-pre-202620-1acc0238-4945-routegolem/routeguard-web-services) | Backend: ASP.NET Core (.NET 10) REST API with JWT and roles (admin, driver, parent), PostgreSQL, RabbitMQ, deployed on Azure |
+| [routeguard-native-app](https://github.com/upc-pre-202620-1acc0238-4945-routegolem/routeguard-native-app) | Android app (Kotlin, Jetpack Compose, Hilt, Retrofit, Room, Mapbox) for drivers, parents and administrators |
+| routeguard-landing-page (this repo) | Marketing landing page, published with GitHub Pages |
+
 ### Project structure
 ```
 index.html          Landing page markup
 assets/
 ├── styles.css      Custom styles
 ├── script.js       Theme switcher (light / dark)
-└── images/         Logo, page screenshots (p1-p7), app mockups and team photos
+└── images/         Logo, hero image, page screenshots (p1-p7), app mockups and team photos
 ```
+
+### Page sections
+`problem` (the challenge) · `solution` (the connected ecosystem and its impact) · `features` · `plans` · `product` (app mockups) · `validation-video` · `team`
 
 ### Build with
 - Semantic HTML5 markup
 - Tailwind CSS (CDN) with a custom stylesheet
 - Poppins typography (Google Fonts)
 - Vanilla JavaScript (light / dark theme switcher)
+- YouTube embed for the validation video
+
+### Run locally
+It is a static site with no build step: open `index.html` in a browser, or serve the folder with any static server (for example `python -m http.server 8000` and visit `http://localhost:8000`).
+
+### Deployment
+Published with GitHub Pages from the `develop` branch, root folder.
 
 ### Author
 - RouteGolem
