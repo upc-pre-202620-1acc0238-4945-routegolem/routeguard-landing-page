@@ -25,9 +25,9 @@ const TRANSLATIONS = {
             'Intelligent fleet management and private school transport monitoring ecosystem. Eliminate daily uncertainty and phone calls while driving.',
         hero_cta_primary: 'Explore Features',
         hero_cta_secondary: 'Watch Product Videos',
-        hero_pill_1: '✓ Native Kotlin Driver App',
-        hero_pill_2: '✓ Flutter Cross-Platform App',
-        hero_pill_3: '✓ Bilingual EN / ES & Offline-First',
+        hero_pill_1: 'Native Kotlin Driver App',
+        hero_pill_2: 'Flutter Cross-Platform App',
+        hero_pill_3: 'Bilingual EN / ES & Offline-First',
         problem_title: "The challenge of today's school transport",
         problem_subtitle:
             'Informal coordination through phone calls and chat messages compromises road safety and creates daily stress for families.',
@@ -131,6 +131,11 @@ const TRANSLATIONS = {
         terms_p3:
             'Service plans (Basic S/ 49.99, Intermediate S/ 99.99, Complete S/ 179.99) operate via Stripe test mode integration for educational demonstration within course 1ACC0238 at UPC.',
         terms_close_btn: 'Understood',
+        github_modal_title: 'Leaving RouteGuard Landing Page',
+        github_modal_desc:
+            'You are about to be redirected to an external GitHub repository belonging to the RouteGolem organization.',
+        github_modal_cancel: 'Cancel',
+        github_modal_continue: 'Continue to GitHub',
     },
     es: {
         meta_title: 'RouteGuard - Monitoreo de Transporte Escolar en Tiempo Real',
@@ -152,9 +157,9 @@ const TRANSLATIONS = {
             'Ecosistema inteligente para la gestión de flotas y monitoreo del transporte escolar privado. Olvídate de la incertidumbre y las llamadas al volante.',
         hero_cta_primary: 'Explorar Características',
         hero_cta_secondary: 'Ver Videos del Producto',
-        hero_pill_1: '✓ App Nativa Kotlin para Conductores',
-        hero_pill_2: '✓ App Multiplataforma en Flutter',
-        hero_pill_3: '✓ Bilingüe ES / EN y Modo Offline',
+        hero_pill_1: 'App Nativa Kotlin para Conductores',
+        hero_pill_2: 'App Multiplataforma en Flutter',
+        hero_pill_3: 'Bilingüe ES / EN y Modo Offline',
         problem_title: 'El desafío del transporte escolar actual',
         problem_subtitle:
             'La coordinación informal basada en llamadas y mensajes pone en riesgo la seguridad vial y genera estrés diario en las familias.',
@@ -260,6 +265,11 @@ const TRANSLATIONS = {
         terms_p3:
             'Los planes de suscripción (Básico S/ 49.99, Intermedio S/ 99.99, Completo S/ 179.99) operan con integración Stripe en modo de prueba para demostración académica del curso 1ACC0238 en la UPC.',
         terms_close_btn: 'Entendido',
+        github_modal_title: 'Saliendo de RouteGuard Landing Page',
+        github_modal_desc:
+            'Estás a punto de ser redirigido a un repositorio externo de GitHub perteneciente a la organización RouteGolem.',
+        github_modal_cancel: 'Cancelar',
+        github_modal_continue: 'Continuar a GitHub',
     },
 };
 
@@ -285,8 +295,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateThemeButton(isDark) {
         if (!themeToggleBtn) return;
-        const iconSpan = themeToggleBtn.querySelector('span');
-        if (iconSpan) iconSpan.textContent = isDark ? '☀️' : '🌙';
+        const moonIcon = document.getElementById('theme-icon-moon');
+        const sunIcon = document.getElementById('theme-icon-sun');
+        if (moonIcon) moonIcon.classList.toggle('hidden', isDark);
+        if (sunIcon) sunIcon.classList.toggle('hidden', !isDark);
         themeToggleBtn.setAttribute('aria-pressed', String(isDark));
     }
 
@@ -398,12 +410,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Global Escape key handler for menu & modal
+    // 5. External GitHub Redirect Confirmation Modal
+    const githubModal = document.getElementById('github-modal');
+    const githubTargetUrl = document.getElementById('github-target-url');
+    const githubConfirmBtn = document.getElementById('github-confirm');
+    const githubCancelBtn = document.getElementById('github-cancel');
+    const githubCloseBtn = document.getElementById('github-close');
+    let lastRedirectTrigger = null;
+
+    function toggleGithubModal(open, href = '') {
+        if (!githubModal) return;
+        if (open && href) {
+            if (githubTargetUrl) githubTargetUrl.textContent = href;
+            if (githubConfirmBtn) githubConfirmBtn.setAttribute('href', href);
+        }
+        githubModal.classList.toggle('hidden', !open);
+        document.body.classList.toggle('overflow-hidden', open);
+        if (open && githubConfirmBtn) {
+            githubConfirmBtn.focus();
+        } else if (!open && lastRedirectTrigger) {
+            lastRedirectTrigger.focus();
+            lastRedirectTrigger = null;
+        }
+    }
+
+    document.querySelectorAll('[data-github-redirect]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            lastRedirectTrigger = link;
+            toggleGithubModal(true, link.getAttribute('href') || '');
+        });
+    });
+
+    if (githubModal) {
+        if (githubCloseBtn) githubCloseBtn.addEventListener('click', () => toggleGithubModal(false));
+        if (githubCancelBtn) githubCancelBtn.addEventListener('click', () => toggleGithubModal(false));
+        if (githubConfirmBtn) githubConfirmBtn.addEventListener('click', () => toggleGithubModal(false));
+        githubModal.addEventListener('click', (event) => {
+            if (event.target === githubModal) toggleGithubModal(false);
+        });
+    }
+
+    // Global Escape key handler for menu & modals
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
             setMenuOpen(false);
             if (termsModal && !termsModal.classList.contains('hidden')) {
                 toggleTermsModal(false);
+            }
+            if (githubModal && !githubModal.classList.contains('hidden')) {
+                toggleGithubModal(false);
             }
         }
     });
