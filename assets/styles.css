@@ -24,12 +24,45 @@
     background-color: var(--color-secondary);
 }
 
-/* Custom scroll behavior and font smoothing */
+/* Custom scroll behavior, smooth anchors with fixed header offset, and font smoothing */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle decorative glow behind the hero */
+.hero-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(600px circle at 15% 20%, rgba(30, 58, 138, 0.08), transparent 60%),
+        radial-gradient(500px circle at 85% 30%, rgba(16, 185, 129, 0.09), transparent 60%);
+}
+
+.dark .hero-glow {
+    background:
+        radial-gradient(600px circle at 15% 20%, rgba(59, 130, 246, 0.14), transparent 60%),
+        radial-gradient(500px circle at 85% 30%, rgba(16, 185, 129, 0.12), transparent 60%);
+}
+
+/* Polished interactive card elevation */
+.card-lift {
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.card-lift:hover {
+    transform: translateY(-3px);
+}
+
+/* Accessible keyboard focus indicator */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #10B981;
+    outline-offset: 2px;
 }

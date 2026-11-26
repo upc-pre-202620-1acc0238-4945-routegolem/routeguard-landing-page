@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RouteGuard - Monitoreo de Transporte Escolar en Tiempo Real</title>
+    <title>RouteGuard - Real-Time School Transport Monitoring</title>
     <!-- Meta tags for SEO and Open Graph -->
     <meta name="description"
-        content="Plataforma inteligente para la gestión de flotas y monitoreo del transporte escolar privado. Brinda seguridad a tus hijos y tranquilidad a tu familia.">
-    <meta property="og:title" content="RouteGuard - Transporte Escolar Seguro">
-    <meta property="og:description" content="Tracking GPS en segundo plano, geofencing y control de abordaje offline.">
+        content="Smart platform for school transport fleet management and real-time GPS monitoring. Keep children safe and bring peace of mind to families and drivers.">
+    <meta name="keywords"
+        content="RouteGuard, school transport monitoring, GPS tracking, school bus app, geofencing, offline check-in, Flutter, Android Kotlin, UPC">
+    <meta name="author" content="RouteGolem Team - UPC Software Engineering">
+    <meta property="og:title" content="RouteGuard - Safe School Transport Monitoring">
+    <meta property="og:description"
+        content="Background GPS telemetry, offline boarding check-in, geofencing alerts, and authorized caregiver network.">
+    <meta property="og:type" content="website">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -38,39 +43,73 @@
 </head>
 
 <body
-    class="bg-slate-50 text-slate-700 dark:bg-slate-900 dark:text-slate-100 font-poppins transition-colors duration-300">
+    class="bg-slate-50 text-slate-700 dark:bg-slate-950 dark:text-slate-100 font-poppins transition-colors duration-300 antialiased">
+
+    <!-- Skip Link for Keyboard / Screen Reader Accessibility -->
+    <a href="#main-content" data-i18n="skip_to_content"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-xl focus:bg-blue-900 focus:text-white focus:font-semibold focus:shadow-lg">
+        Skip to main content
+    </a>
 
     <!-- Header & Fixed Navbar -->
     <header
-        class="fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-slate-200/50 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-1.5 -ml-2">
+        class="fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md shadow-sm border-b border-slate-200/70 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <a href="#" class="flex items-center gap-2 -ml-1 focus-ring rounded-xl pr-2"
+                aria-label="RouteGuard Home">
                 <img src="assets/images/RouteGuard.png" alt="RouteGuard Logo"
-                    class="h-14 w-auto dark:brightness-125 dark:drop-shadow-[0_0_6px_rgba(16,185,129,0.4)] transition-all">
+                    class="h-12 w-auto dark:brightness-125 dark:drop-shadow-[0_0_6px_rgba(16,185,129,0.4)] transition-all">
                 <span class="text-2xl font-bold text-blue-900 dark:text-white tracking-tight">Route<span
                         class="text-emerald-500">Guard</span></span>
             </a>
-            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600 dark:text-slate-300">
-                <a href="#problem" class="hover:text-blue-900 dark:hover:text-white transition-colors">Problema</a>
-                <a href="#solution" class="hover:text-blue-900 dark:hover:text-white transition-colors">Solución</a>
-                <a href="#features" class="hover:text-blue-900 dark:hover:text-white transition-colors">Features</a>
-                <a href="#plans" class="hover:text-blue-900 dark:hover:text-white transition-colors">Planes</a>
-                <a href="#product" class="hover:text-blue-900 dark:hover:text-white transition-colors">Producto</a>
-                <a href="#team" class="hover:text-blue-900 dark:hover:text-white transition-colors">Equipo</a>
+
+            <nav aria-label="Primary navigation"
+                class="hidden lg:flex items-center gap-7 font-medium text-sm text-slate-600 dark:text-slate-300">
+                <a href="#problem" data-i18n="nav_problem"
+                    class="hover:text-blue-900 dark:hover:text-white transition-colors">Problem</a>
+                <a href="#solution" data-i18n="nav_solution"
+                    class="hover:text-blue-900 dark:hover:text-white transition-colors">Solution</a>
+                <a href="#features" data-i18n="nav_features"
+                    class="hover:text-blue-900 dark:hover:text-white transition-colors">Features</a>
+                <a href="#plans" data-i18n="nav_plans"
+                    class="hover:text-blue-900 dark:hover:text-white transition-colors">Plans</a>
+                <a href="#product" data-i18n="nav_product"
+                    class="hover:text-blue-900 dark:hover:text-white transition-colors">Product</a>
+                <a href="#videos" data-i18n="nav_videos"
+                    class="hover:text-blue-900 dark:hover:text-white transition-colors">Videos</a>
+                <a href="#team" data-i18n="nav_team"
+                    class="hover:text-blue-900 dark:hover:text-white transition-colors">Team</a>
             </nav>
-            <div class="flex items-center gap-3 sm:gap-4">
-                <button id="theme-toggle" aria-label="Toggle dark mode"
-                    class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:scale-105 transition-transform shadow-sm">
-                    🌙
+
+            <div class="flex items-center gap-2.5 sm:gap-3">
+                <!-- Language Switcher (i18n: EN / ES) -->
+                <div role="group" aria-label="Language selector"
+                    class="inline-flex items-center rounded-xl bg-slate-100 dark:bg-slate-800 p-1 border border-slate-200/70 dark:border-slate-700">
+                    <button id="lang-en" type="button" data-lang="en" aria-pressed="true"
+                        class="px-2.5 py-1 rounded-lg text-xs font-semibold transition-all bg-white dark:bg-slate-700 text-blue-900 dark:text-white shadow-sm">
+                        EN
+                    </button>
+                    <button id="lang-es" type="button" data-lang="es" aria-pressed="false"
+                        class="px-2.5 py-1 rounded-lg text-xs font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
+                        ES
+                    </button>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false"
+                    class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:scale-105 transition-transform shadow-sm border border-slate-200/70 dark:border-slate-700">
+                    <span aria-hidden="true">🌙</span>
                 </button>
+
                 <a href="https://github.com/upc-pre-202620-1acc0238-4945-routegolem/routeguard-report" target="_blank"
-                    rel="noopener noreferrer"
-                    class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/20 text-sm">
-                    Ver Repositorio
+                    rel="noopener noreferrer" data-i18n="nav_repo"
+                    class="hidden sm:inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors shadow-lg shadow-emerald-600/20 text-sm">
+                    View Repository
                 </a>
-                <button id="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"
+
+                <button id="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
                     aria-controls="mobile-menu"
-                    class="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:scale-105 transition-transform shadow-sm">
+                    class="lg:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:scale-105 transition-transform shadow-sm border border-slate-200/70 dark:border-slate-700">
                     <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M4 6h16M4 12h16M4 18h16" />
@@ -83,67 +122,80 @@
             </div>
         </div>
 
-        <!-- Mobile navigation (hidden on md and up) -->
-        <nav id="mobile-menu"
-            class="hidden md:hidden border-t border-slate-200/70 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+        <!-- Mobile navigation (hidden on lg and up) -->
+        <nav id="mobile-menu" aria-label="Mobile navigation"
+            class="hidden lg:hidden border-t border-slate-200/70 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md">
             <div
                 class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col font-medium text-slate-700 dark:text-slate-200">
-                <a href="#problem" class="py-3 border-b border-slate-100 dark:border-slate-800">Problema</a>
-                <a href="#solution" class="py-3 border-b border-slate-100 dark:border-slate-800">Solución</a>
-                <a href="#features" class="py-3 border-b border-slate-100 dark:border-slate-800">Features</a>
-                <a href="#plans" class="py-3 border-b border-slate-100 dark:border-slate-800">Planes</a>
-                <a href="#product" class="py-3 border-b border-slate-100 dark:border-slate-800">Producto</a>
-                <a href="#team" class="py-3 border-b border-slate-100 dark:border-slate-800">Equipo</a>
+                <a href="#problem" data-i18n="nav_problem"
+                    class="py-3 border-b border-slate-100 dark:border-slate-800">Problem</a>
+                <a href="#solution" data-i18n="nav_solution"
+                    class="py-3 border-b border-slate-100 dark:border-slate-800">Solution</a>
+                <a href="#features" data-i18n="nav_features"
+                    class="py-3 border-b border-slate-100 dark:border-slate-800">Features</a>
+                <a href="#plans" data-i18n="nav_plans"
+                    class="py-3 border-b border-slate-100 dark:border-slate-800">Plans</a>
+                <a href="#product" data-i18n="nav_product"
+                    class="py-3 border-b border-slate-100 dark:border-slate-800">Product</a>
+                <a href="#videos" data-i18n="nav_videos"
+                    class="py-3 border-b border-slate-100 dark:border-slate-800">Videos</a>
+                <a href="#team" data-i18n="nav_team"
+                    class="py-3 border-b border-slate-100 dark:border-slate-800">Team</a>
                 <a href="https://github.com/upc-pre-202620-1acc0238-4945-routegolem/routeguard-report" target="_blank"
-                    rel="noopener noreferrer"
-                    class="mt-3 mb-1 inline-flex items-center justify-center px-5 py-3 rounded-xl bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition-colors text-sm">
-                    Ver Repositorio
+                    rel="noopener noreferrer" data-i18n="nav_repo"
+                    class="mt-3 mb-1 inline-flex items-center justify-center px-5 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors text-sm">
+                    View Repository
                 </a>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
-        <section class="pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6 text-center lg:text-left">
-                        <span
-                            class="inline-block px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wide uppercase">
-                            Movilidad Escolar Inteligente
+                        <span data-i18n="hero_badge"
+                            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-semibold tracking-wide uppercase">
+                            Smart School Mobility · Android &amp; Flutter
                         </span>
-                        <h1
+                        <h1 data-i18n="hero_title"
                             class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
-                            La seguridad y tranquilidad que tus hijos merecen, en <span
-                                class="text-blue-900 dark:text-blue-400">tiempo real</span>.
+                            The safety and peace of mind your children deserve, in <span
+                                class="text-blue-900 dark:text-blue-400">real time</span>.
                         </h1>
-                        <p class="text-lg text-slate-600 dark:text-slate-300 max-w-xl mx-auto lg:mx-0">
-                            Plataforma inteligente para la gestión de flotas y monitoreo del transporte escolar privado.
-                            Olvídate de la incertidumbre y las llamadas al volante.
+                        <p data-i18n="hero_subtitle"
+                            class="text-lg text-slate-600 dark:text-slate-300 max-w-xl mx-auto lg:mx-0">
+                            Intelligent fleet management and private school transport monitoring ecosystem. Eliminate
+                            daily uncertainty and phone calls while driving.
                         </p>
-                        <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
-                            <a href="#features"
+                        <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#features" data-i18n="hero_cta_primary"
                                 class="px-8 py-4 rounded-xl bg-blue-900 text-white font-semibold hover:bg-blue-800 transition-all shadow-xl shadow-blue-900/20 text-center text-sm">
-                                Explorar Características
+                                Explore Features
                             </a>
-                            <a href="https://github.com/upc-pre-202620-1acc0238-4945-routegolem/routeguard-report"
-                                target="_blank" rel="noopener noreferrer"
+                            <a href="#videos" data-i18n="hero_cta_secondary"
                                 class="px-8 py-4 rounded-xl border border-slate-300 dark:border-slate-700 font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-center text-sm">
-                                Conocer el Proyecto
+                                Watch Product Videos
                             </a>
+                        </div>
+                        <div
+                            class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs font-medium text-slate-500 dark:text-slate-400">
+                            <span data-i18n="hero_pill_1">✓ Native Kotlin Driver App</span>
+                            <span data-i18n="hero_pill_2">✓ Flutter Cross-Platform App</span>
+                            <span data-i18n="hero_pill_3">✓ Bilingual EN / ES &amp; Offline-First</span>
                         </div>
                     </div>
-                    <div class="relative flex justify-center items-center">
-                        <!-- Glowing backdrop effect -->
-                        <div
-                            class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-blue-900 to-emerald-500 opacity-20 blur-2xl">
-                        </div>
 
-                        <!-- Clean Image Container without phone borders -->
+                    <div class="relative flex justify-center items-center">
+                        <div aria-hidden="true"
+                            class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-blue-900 to-emerald-500 opacity-20 blur-2xl">
+                        </div>
                         <div
-                            class="relative w-full max-w-[280px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 p-2">
-                            <img src="assets/images/hero.webp" alt="RouteGuard App Interface" loading="lazy"
+                            class="relative w-full max-w-[300px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2.5">
+                            <img src="assets/images/hero.webp" alt="RouteGuard Mobile Tracking Interface"
                                 class="w-full h-auto rounded-2xl object-cover">
                         </div>
                     </div>
@@ -153,45 +205,61 @@
 
         <!-- Problem Section -->
         <section id="problem"
-            class="py-20 bg-slate-100/70 dark:bg-slate-800/40 border-y border-slate-200/60 dark:border-slate-800">
+            class="py-20 bg-slate-100/80 dark:bg-slate-900/60 border-y border-slate-200/70 dark:border-slate-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">El desafío
-                        del transporte escolar actual</h2>
-                    <p class="text-slate-600 dark:text-slate-300">La coordinación informal basada en llamadas y mensajes
-                        pone en riesgo la seguridad vial y genera constantes niveles de estrés familiar.</p>
+                    <h2 data-i18n="problem_title"
+                        class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+                        The challenge of today's school transport
+                    </h2>
+                    <p data-i18n="problem_subtitle" class="text-slate-600 dark:text-slate-300">
+                        Informal coordination through phone calls and chat messages compromises road safety and creates
+                        daily stress for families.
+                    </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div
-                        class="p-8 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-rose-100 dark:bg-rose-900/30 text-rose-600 flex items-center justify-center text-xl font-bold">
-                            ⚠️</div>
-                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Incertidumbre Diaria</h3>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Los padres esperan a
-                            ciegas la llegada de la movilidad sin conocer la ubicación exacta ni previsiones ante el
-                            tráfico limeño.</p>
-                    </div>
-                    <div
-                        class="p-8 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/30 text-amber-600 flex items-center justify-center text-xl font-bold">
-                            📱</div>
-                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Distracción al Volante</h3>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Los conductores sufren
-                            sobrecarga laboral intentando contestar llamadas y reportar avances de ruta de forma manual
-                            mientras conducen.</p>
-                    </div>
-                    <div
-                        class="p-8 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-900 dark:text-blue-400 flex items-center justify-center text-xl font-bold">
-                            📋</div>
-                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Procesos Informales</h3>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Uso masivo de listas en
-                            papel y chats saturados que dificultan la administración escalable de flotas y cobros
-                            puntuales.</p>
-                    </div>
+                    <article
+                        class="p-8 rounded-2xl bg-white dark:bg-slate-800/90 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4 card-lift">
+                        <div aria-hidden="true"
+                            class="w-12 h-12 rounded-xl bg-rose-100 dark:bg-rose-900/40 text-rose-600 flex items-center justify-center text-xl font-bold">
+                            ⚠️
+                        </div>
+                        <h3 data-i18n="problem_1_title" class="text-xl font-semibold text-slate-900 dark:text-white">
+                            Daily Uncertainty</h3>
+                        <p data-i18n="problem_1_desc"
+                            class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Parents wait without real-time visibility of the vehicle's exact location or arrival ETA in
+                            heavy urban traffic.
+                        </p>
+                    </article>
+                    <article
+                        class="p-8 rounded-2xl bg-white dark:bg-slate-800/90 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4 card-lift">
+                        <div aria-hidden="true"
+                            class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/40 text-amber-600 flex items-center justify-center text-xl font-bold">
+                            📱
+                        </div>
+                        <h3 data-i18n="problem_2_title" class="text-xl font-semibold text-slate-900 dark:text-white">
+                            Driver Distraction</h3>
+                        <p data-i18n="problem_2_desc"
+                            class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Drivers face cognitive overload trying to answer phone calls and manually report route
+                            updates while driving.
+                        </p>
+                    </article>
+                    <article
+                        class="p-8 rounded-2xl bg-white dark:bg-slate-800/90 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4 card-lift">
+                        <div aria-hidden="true"
+                            class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-400 flex items-center justify-center text-xl font-bold">
+                            📋
+                        </div>
+                        <h3 data-i18n="problem_3_title" class="text-xl font-semibold text-slate-900 dark:text-white">
+                            Informal Operations</h3>
+                        <p data-i18n="problem_3_desc"
+                            class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Reliance on paper rosters and cluttered group chats hinders scalable fleet control, billing,
+                            and authorized pickups.
+                        </p>
+                    </article>
                 </div>
             </div>
         </section>
@@ -201,48 +269,60 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6">
-                        <span
-                            class="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-900 dark:text-blue-400 text-xs font-semibold tracking-wide uppercase">
-                            Arquitectura Dual
+                        <span data-i18n="solution_badge"
+                            class="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-300 text-xs font-semibold tracking-wide uppercase">
+                            Dual Architecture
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Un
-                            ecosistema conectado para conductores y familias</h2>
-                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">RouteGuard divide su operación en
-                            dos interfaces optimizadas para cada actor del servicio, garantizando eficiencia operativa y
-                            cero distracciones.</p>
+                        <h2 data-i18n="solution_title"
+                            class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+                            A connected ecosystem for administrators, drivers, and families
+                        </h2>
+                        <p data-i18n="solution_desc" class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                            RouteGuard delivers full 3-role parity across its Android Native (Kotlin) and Cross-Platform
+                            (Flutter) clients backed by an ASP.NET Core 10 RESTful API.
+                        </p>
                         <ul class="space-y-4 text-sm">
                             <li class="flex items-start gap-3">
-                                <span
-                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold">✓</span>
-                                <div><strong class="text-slate-900 dark:text-white">App Nativa para
-                                        Conductores:</strong> GPS en segundo plano y modo offline para zonas sin
-                                    cobertura celular.</div>
+                                <span aria-hidden="true"
+                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">✓</span>
+                                <div data-i18n="solution_bullet_1">
+                                    <strong class="text-slate-900 dark:text-white">Native App for Drivers &amp;
+                                        Fleets:</strong> Background GPS tracking, Room offline persistence, and one-tap
+                                    boarding check-in with undo protection.
+                                </div>
                             </li>
                             <li class="flex items-start gap-3">
-                                <span
-                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold">✓</span>
-                                <div><strong class="text-slate-900 dark:text-white">App Multiplataforma para
-                                        Padres:</strong> Consumo pasivo con alertas automáticas de proximidad mediante
-                                    Geofencing.</div>
+                                <span aria-hidden="true"
+                                    class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">✓</span>
+                                <div data-i18n="solution_bullet_2">
+                                    <strong class="text-slate-900 dark:text-white">Flutter Cross-Platform App:</strong>
+                                    Interactive live OpenStreetMap view, authorized caregiver network, push alerts, and
+                                    instant EN/ES switching.
+                                </div>
                             </li>
                         </ul>
                     </div>
                     <div
-                        class="bg-gradient-to-br from-blue-900/5 to-emerald-500/5 p-8 rounded-3xl border border-blue-900/10 dark:border-slate-800 space-y-6">
-                        <h3 class="text-2xl font-bold text-blue-900 dark:text-blue-400">Impacto Comprobado</h3>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Diseñado bajo rigurosas
-                            técnicas de Ingeniería de Software (Lean UX y Domain-Driven Design) para resolver las
-                            verdaderas necesidades del mercado peruano.</p>
+                        class="bg-gradient-to-br from-blue-900/5 to-emerald-500/10 p-8 rounded-3xl border border-blue-900/10 dark:border-slate-800 space-y-6">
+                        <h3 data-i18n="solution_impact_title"
+                            class="text-2xl font-bold text-blue-900 dark:text-blue-400">Proven Engineering Impact</h3>
+                        <p data-i18n="solution_impact_desc"
+                            class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Built with Lean UX, Domain-Driven Design (DDD), automated unit/widget testing, and CI/CD
+                            delivery to Firebase App Distribution.
+                        </p>
                         <div class="grid grid-cols-2 gap-4 pt-2">
                             <div
                                 class="p-5 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200/60 dark:border-slate-700">
                                 <div class="text-3xl font-extrabold text-emerald-500">100%</div>
-                                <div class="text-xs text-slate-500 mt-1">Trazabilidad de ruta</div>
+                                <div data-i18n="solution_metric_1" class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                    End-to-end route traceability</div>
                             </div>
                             <div
                                 class="p-5 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200/60 dark:border-slate-700">
-                                <div class="text-3xl font-extrabold text-blue-900 dark:text-blue-400">0</div>
-                                <div class="text-xs text-slate-500 mt-1">Distracciones al volante</div>
+                                <div class="text-3xl font-extrabold text-blue-900 dark:text-blue-400">60+</div>
+                                <div data-i18n="solution_metric_2" class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                    Automated CI tests (Native + Flutter)</div>
                             </div>
                         </div>
                     </div>
@@ -252,232 +332,375 @@
 
         <!-- Features Section -->
         <section id="features"
-            class="py-20 bg-slate-100/70 dark:bg-slate-800/40 border-y border-slate-200/60 dark:border-slate-800">
+            class="py-20 bg-slate-100/80 dark:bg-slate-900/60 border-y border-slate-200/70 dark:border-slate-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Features
-                        Principales</h2>
-                    <p class="text-slate-600 dark:text-slate-300">Potentes herramientas desarrolladas para garantizar un
-                        viaje seguro de principio a fin.</p>
+                    <h2 data-i18n="features_title"
+                        class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Core
+                        Features</h2>
+                    <p data-i18n="features_subtitle" class="text-slate-600 dark:text-slate-300">Purpose-built tools to
+                        keep every school trip safe, traceable, and accessible.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div
-                        class="p-8 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4 hover:shadow-md transition-shadow">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-900 dark:text-blue-400 flex items-center justify-center text-xl font-bold">
-                            📍</div>
-                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">GPS en Background</h3>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Transmisión continua de
-                            coordenadas en segundo plano sin interrumpir la concentración del conductor.</p>
-                    </div>
-                    <div
-                        class="p-8 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4 hover:shadow-md transition-shadow">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 flex items-center justify-center text-xl font-bold">
-                            📶</div>
-                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Check-in Offline</h3>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Registro de abordajes y
-                            asistencia sin internet gracias al almacenamiento local con sincronización diferida.</p>
-                    </div>
-                    <div
-                        class="p-8 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4 hover:shadow-md transition-shadow">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center text-xl font-bold">
-                            🔔</div>
-                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Alertas Geofencing</h3>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Notificaciones automáticas
-                            push cuando la unidad penetra el perímetro cercano al hogar del estudiante.</p>
-                    </div>
+                    <article
+                        class="p-8 rounded-2xl bg-white dark:bg-slate-800/90 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4 card-lift">
+                        <div aria-hidden="true"
+                            class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-400 flex items-center justify-center text-xl font-bold">
+                            📍
+                        </div>
+                        <h3 data-i18n="feat_1_title" class="text-xl font-semibold text-slate-900 dark:text-white">Live GPS
+                            Telemetry</h3>
+                        <p data-i18n="feat_1_desc" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Real-time location streaming with ETA calculation, vehicle speed indicator, and interactive
+                            map stops.
+                        </p>
+                    </article>
+                    <article
+                        class="p-8 rounded-2xl bg-white dark:bg-slate-800/90 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4 card-lift">
+                        <div aria-hidden="true"
+                            class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 flex items-center justify-center text-xl font-bold">
+                            📶
+                        </div>
+                        <h3 data-i18n="feat_2_title" class="text-xl font-semibold text-slate-900 dark:text-white">Offline
+                            Check-in &amp; Sync</h3>
+                        <p data-i18n="feat_2_desc" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Local Room storage and resilient offline demo fallback keep student boarding logs working
+                            even without mobile signal.
+                        </p>
+                    </article>
+                    <article
+                        class="p-8 rounded-2xl bg-white dark:bg-slate-800/90 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4 card-lift">
+                        <div aria-hidden="true"
+                            class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/40 text-purple-600 flex items-center justify-center text-xl font-bold">
+                            🛡️
+                        </div>
+                        <h3 data-i18n="feat_3_title" class="text-xl font-semibold text-slate-900 dark:text-white">
+                            Caregiver Network &amp; Alerts</h3>
+                        <p data-i18n="feat_3_desc" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Authorized pickup caregivers, instant push notifications via FCM, direct driver calling, and
+                            live English/Spanish switching.
+                        </p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Plans & Pricing Section (In Soles) -->
-        <section id="plans"
-            class="py-20 bg-slate-100/70 dark:bg-slate-800/40 border-y border-slate-200/60 dark:border-slate-800">
+        <!-- Plans & Pricing Section (Unified with Native & Flutter Apps) -->
+        <section id="plans" class="py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                    <span
-                        class="inline-block px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wide uppercase">
-                        Planes Accesibles
+                    <span data-i18n="plans_badge"
+                        class="inline-block px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-semibold tracking-wide uppercase">
+                        Flexible Plans
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Empieza
-                        gratis. Escala cuando lo necesites.</h2>
-                    <p class="text-slate-600 dark:text-slate-300 text-sm">Elige el plan ideal para tu gestión de
-                        transporte escolar.</p>
+                    <h2 data-i18n="plans_title"
+                        class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+                        Scale confidently with your school fleet
+                    </h2>
+                    <p data-i18n="plans_subtitle" class="text-slate-600 dark:text-slate-300 text-sm">
+                        Choose the subscription tier integrated directly with Stripe in RouteGuard Mobile and Flutter.
+                    </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
                     <!-- Plan Basic -->
-                    <div
-                        class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col justify-between space-y-8">
+                    <article
+                        class="bg-white dark:bg-slate-800/90 rounded-3xl p-8 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col justify-between space-y-8 card-lift">
                         <div class="space-y-4">
-                            <span class="text-sm font-bold uppercase tracking-wider text-slate-400">Básico</span>
+                            <span data-i18n="plan_basic_name"
+                                class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Basic</span>
                             <div class="flex items-baseline gap-1">
-                                <span class="text-4xl font-extrabold text-slate-900 dark:text-white">Gratis</span>
+                                <span class="text-4xl font-extrabold text-slate-900 dark:text-white">S/ 49.99</span>
+                                <span data-i18n="plan_period" class="text-slate-500 dark:text-slate-400 text-sm">/ month</span>
                             </div>
-                            <p class="text-sm text-slate-500 dark:text-slate-400">Ideal para conductores independientes
-                                que inician.</p>
+                            <p data-i18n="plan_basic_desc" class="text-sm text-slate-500 dark:text-slate-400">
+                                Essential monitoring for small school transport operations.
+                            </p>
                             <ul
                                 class="space-y-3 text-sm text-slate-600 dark:text-slate-300 pt-4 border-t border-slate-100 dark:border-slate-700">
-                                <li class="flex items-center gap-2">✅ Control de asistencia diario</li>
-                                <li class="flex items-center gap-2">✅ Seguimiento básico de ruta</li>
-                                <li class="flex items-center gap-2">✅ Soporte offline para check-in</li>
-                                <li class="flex items-center gap-2">✅ Historial de los últimos 7 días</li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">✅</span> <span
+                                        data-i18n="plan_basic_f1">Up to 2 concurrent school routes</span></li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">✅</span> <span
+                                        data-i18n="plan_basic_f2">Up to 2 registered drivers</span></li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">✅</span> <span
+                                        data-i18n="plan_basic_f3">Real-time GPS telemetry tracking</span></li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">✅</span> <span
+                                        data-i18n="plan_basic_f4">Parent app with authorized caregiver network</span></li>
                             </ul>
                         </div>
-                        <a href="#team"
+                        <a href="#product" data-i18n="plan_cta"
                             class="w-full py-3.5 rounded-xl border border-slate-300 dark:border-slate-600 text-center font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-                            Comenzar Gratis
+                            See in App
                         </a>
-                    </div>
+                    </article>
 
-                    <!-- Plan Flota / Pro (En Soles) -->
-                    <div
-                        class="bg-blue-900 text-white rounded-3xl p-8 shadow-xl relative flex flex-col justify-between space-y-8 border border-blue-800">
-                        <div
-                            class="absolute -top-4 right-8 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
-                            Popular
+                    <!-- Plan Intermediate (Recommended) -->
+                    <article
+                        class="bg-blue-900 text-white rounded-3xl p-8 shadow-xl relative flex flex-col justify-between space-y-8 border border-blue-700 lg:-translate-y-2 card-lift">
+                        <div data-i18n="plan_popular_badge"
+                            class="absolute -top-4 right-8 bg-emerald-500 text-white text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-md">
+                            Recommended
                         </div>
                         <div class="space-y-4">
-                            <span class="text-sm font-bold uppercase tracking-wider text-blue-200">Flota / Pro</span>
+                            <span data-i18n="plan_inter_name"
+                                class="text-sm font-bold uppercase tracking-wider text-blue-200">Intermediate</span>
                             <div class="flex items-baseline gap-1">
-                                <span class="text-4xl font-extrabold">S/ 49.99</span>
-                                <span class="text-blue-200 text-sm">/ mes</span>
+                                <span class="text-4xl font-extrabold">S/ 99.99</span>
+                                <span data-i18n="plan_period" class="text-blue-200 text-sm">/ month</span>
                             </div>
-                            <p class="text-sm text-blue-100">Para administradores con múltiples unidades y padres
-                                exigentes.</p>
+                            <p data-i18n="plan_inter_desc" class="text-sm text-blue-100">
+                                Recommended option for growing mobility fleets.
+                            </p>
                             <ul class="space-y-3 text-sm text-blue-100 pt-4 border-t border-blue-800">
-                                <li class="flex items-center gap-2">🌟 Todo lo del plan Básico</li>
-                                <li class="flex items-center gap-2">🌟 Hasta 5 vehículos en simultáneo</li>
-                                <li class="flex items-center gap-2">🌟 Alertas automáticas por Geofencing</li>
-                                <li class="flex items-center gap-2">🌟 Historial completo y reportes avanzados</li>
-                                <li class="flex items-center gap-2">🌟 Botón de pánico e incidencias rápidas</li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">🌟</span> <span
+                                        data-i18n="plan_inter_f1">Up to 5 concurrent school routes</span></li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">🌟</span> <span
+                                        data-i18n="plan_inter_f2">Up to 5 registered drivers</span></li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">🌟</span> <span
+                                        data-i18n="plan_inter_f3">Real-time GPS telemetry tracking</span></li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">🌟</span> <span
+                                        data-i18n="plan_inter_f4">Parent app with authorized caregiver network</span></li>
                             </ul>
                         </div>
                         <a href="https://github.com/upc-pre-202620-1acc0238-4945-routegolem/routeguard-report"
-                            target="_blank" rel="noopener noreferrer"
+                            target="_blank" rel="noopener noreferrer" data-i18n="plan_cta_featured"
                             class="w-full py-3.5 rounded-xl bg-emerald-500 text-white text-center font-semibold text-sm hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/20">
-                            Obtener Plan Pro
+                            Explore Project Docs
                         </a>
-                    </div>
+                    </article>
+
+                    <!-- Plan Complete -->
+                    <article
+                        class="bg-white dark:bg-slate-800/90 rounded-3xl p-8 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col justify-between space-y-8 card-lift">
+                        <div class="space-y-4">
+                            <span data-i18n="plan_complete_name"
+                                class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Complete</span>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-4xl font-extrabold text-slate-900 dark:text-white">S/ 179.99</span>
+                                <span data-i18n="plan_period" class="text-slate-500 dark:text-slate-400 text-sm">/ month</span>
+                            </div>
+                            <p data-i18n="plan_complete_desc" class="text-sm text-slate-500 dark:text-slate-400">
+                                For schools and high-demand transport fleets.
+                            </p>
+                            <ul
+                                class="space-y-3 text-sm text-slate-600 dark:text-slate-300 pt-4 border-t border-slate-100 dark:border-slate-700">
+                                <li class="flex items-center gap-2"><span aria-hidden="true">✅</span> <span
+                                        data-i18n="plan_complete_f1">Up to 15 concurrent school routes</span></li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">✅</span> <span
+                                        data-i18n="plan_complete_f2">Up to 15 registered drivers</span></li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">✅</span> <span
+                                        data-i18n="plan_complete_f3">Real-time GPS telemetry tracking</span></li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">✅</span> <span
+                                        data-i18n="plan_complete_f4">Parent app with authorized caregiver network</span></li>
+                                <li class="flex items-center gap-2"><span aria-hidden="true">✅</span> <span
+                                        data-i18n="plan_complete_f5">24/7 priority phone and WhatsApp support</span></li>
+                            </ul>
+                        </div>
+                        <a href="#product" data-i18n="plan_cta"
+                            class="w-full py-3.5 rounded-xl border border-slate-300 dark:border-slate-600 text-center font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                            See in App
+                        </a>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!-- Product in Action Section -->
-        <section id="product" class="py-20">
+        <section id="product"
+            class="py-20 bg-slate-100/80 dark:bg-slate-900/60 border-y border-slate-200/70 dark:border-slate-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Producto en
-                        Acción</h2>
-                    <p class="text-slate-600 dark:text-slate-300">Visualiza la interfaz diseñada específicamente para
-                        optimizar la experiencia móvil.</p>
+                    <h2 data-i18n="product_title"
+                        class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+                        Product in Action
+                    </h2>
+                    <p data-i18n="product_subtitle" class="text-slate-600 dark:text-slate-300">
+                        Explore the unified mobile experience across our Native Android and Flutter apps.
+                    </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div
-                        class="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-xl bg-white dark:bg-slate-800 p-4">
-                        <img src="assets/images/mockup-home.png" alt="RouteGuard Login Interface" loading="lazy"
-                            class="w-full max-w-[260px] mx-auto h-auto rounded-2xl object-cover shadow-md">
-                        <p class="text-center text-sm font-semibold mt-4 text-slate-600 dark:text-slate-300">Panel
-                            Principal y Resumen de Rutas</p>
-                    </div>
-                    <div
-                        class="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-xl bg-white dark:bg-slate-800 p-4">
-                        <img src="assets/images/mockup-routes.png" alt="RouteGuard Register Interface" loading="lazy"
-                            class="w-full max-w-[260px] mx-auto h-auto rounded-2xl object-cover shadow-md">
-                        <p class="text-center text-sm font-semibold mt-4 text-slate-600 dark:text-slate-300">Módulo de
-                            Seguimiento y Paradas</p>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                    <figure
+                        class="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-lg bg-white dark:bg-slate-800 p-5 flex flex-col items-center card-lift">
+                        <img src="assets/images/mockup-driver.png" alt="Android Native Driver Trip Screen"
+                            loading="lazy"
+                            class="w-full max-w-[240px] mx-auto h-auto rounded-2xl object-cover shadow-md">
+                        <figcaption data-i18n="product_cap_1"
+                            class="text-center text-sm font-semibold mt-5 text-slate-700 dark:text-slate-200">
+                            Android Native · Driver Trip &amp; Boarding Control
+                        </figcaption>
+                    </figure>
+                    <figure
+                        class="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-lg bg-white dark:bg-slate-800 p-5 flex flex-col items-center card-lift">
+                        <img src="assets/images/mockup-parent.png" alt="Flutter Live Parent Tracking Screen"
+                            loading="lazy"
+                            class="w-full max-w-[240px] mx-auto h-auto rounded-2xl object-cover shadow-md">
+                        <figcaption data-i18n="product_cap_2"
+                            class="text-center text-sm font-semibold mt-5 text-slate-700 dark:text-slate-200">
+                            Flutter App · Live Parent Tracking &amp; Direct Call
+                        </figcaption>
+                    </figure>
+                    <figure
+                        class="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-lg bg-white dark:bg-slate-800 p-5 flex flex-col items-center card-lift">
+                        <img src="assets/images/mockup-profile.png" alt="Flutter Multi-Role Switcher and Language Toggle"
+                            loading="lazy"
+                            class="w-full max-w-[240px] mx-auto h-auto rounded-2xl object-cover shadow-md">
+                        <figcaption data-i18n="product_cap_3"
+                            class="text-center text-sm font-semibold mt-5 text-slate-700 dark:text-slate-200">
+                            Multi-Role Switcher, Interactive Guide &amp; ES/EN i18n
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
 
-        <!-- Video Validation Section -->
-        <section id="validation-video" class="py-20">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-                <div class="space-y-4">
-                    <span
-                        class="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-900 dark:text-blue-400 text-xs font-semibold tracking-wide uppercase">
-                        Validación de Usuario
+        <!-- Videos Showcase Section (About the Product, About the Team & User Validation) -->
+        <section id="videos" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <span data-i18n="videos_badge"
+                        class="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-300 text-xs font-semibold tracking-wide uppercase">
+                        Project Videos
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
-                        Mira a un usuario probando RouteGuard
+                    <h2 data-i18n="videos_title"
+                        class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+                        About the Product, Team &amp; Validation
                     </h2>
-                    <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-sm leading-relaxed">
-                        Evaluamos la experiencia de uso, la fluidez de las interfaces y la claridad de nuestra propuesta
-                        mediante pruebas reales con usuarios.
+                    <p data-i18n="videos_subtitle" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Watch our product pitch, engineering team retrospective, and live user validation sessions.
                     </p>
                 </div>
 
-                <!-- Responsive YouTube Embed Container -->
-                <div
-                    class="relative w-full overflow-hidden rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 bg-slate-900 aspect-video">
-                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Bi5yqBs3J1g"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                    </iframe>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Video About the Product -->
+                    <article
+                        class="bg-white dark:bg-slate-800/90 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 shadow-md space-y-4">
+                        <div>
+                            <h3 data-i18n="video_product_title"
+                                class="text-xl font-bold text-slate-900 dark:text-white">About the Product</h3>
+                            <p data-i18n="video_product_desc" class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                                Business model, live telemetry demo, and parent/driver testimonials.
+                            </p>
+                        </div>
+                        <div
+                            class="relative w-full overflow-hidden rounded-2xl shadow-inner bg-slate-900 aspect-video">
+                            <iframe class="absolute top-0 left-0 w-full h-full"
+                                src="https://www.youtube.com/embed/3tTIf0rH-jA" title="RouteGuard - About the Product"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+                    </article>
+
+                    <!-- Video About the Team -->
+                    <article
+                        class="bg-white dark:bg-slate-800/90 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 shadow-md space-y-4">
+                        <div>
+                            <h3 data-i18n="video_team_title" class="text-xl font-bold text-slate-900 dark:text-white">
+                                About the Team</h3>
+                            <p data-i18n="video_team_desc" class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                                RouteGolem Scrum retrospective, GitFlow process, and engineering learnings.
+                            </p>
+                        </div>
+                        <div
+                            class="relative w-full overflow-hidden rounded-2xl shadow-inner bg-slate-900 aspect-video">
+                            <iframe class="absolute top-0 left-0 w-full h-full"
+                                src="https://www.youtube.com/embed/LM1fuvgD5DM" title="RouteGuard - About the Team"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+                    </article>
                 </div>
+
+                <!-- User Validation Video -->
+                <article
+                    class="max-w-4xl mx-auto bg-white dark:bg-slate-800/90 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-md space-y-4">
+                    <div class="text-center space-y-1">
+                        <h3 data-i18n="video_validation_title"
+                            class="text-xl font-bold text-slate-900 dark:text-white">
+                            See a Real User Testing RouteGuard
+                        </h3>
+                        <p data-i18n="video_validation_desc" class="text-sm text-slate-500 dark:text-slate-400">
+                            Usability validation session evaluating real interaction flows and interface clarity.
+                        </p>
+                    </div>
+                    <div class="relative w-full overflow-hidden rounded-2xl shadow-inner bg-slate-900 aspect-video">
+                        <iframe class="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/Bi5yqBs3J1g" title="RouteGuard - User Validation Session"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        </iframe>
+                    </div>
+                </article>
             </div>
         </section>
 
         <!-- Team Section -->
         <section id="team"
-            class="py-20 bg-slate-100/70 dark:bg-slate-800/40 border-y border-slate-200/60 dark:border-slate-800">
+            class="py-20 bg-slate-100/80 dark:bg-slate-900/60 border-y border-slate-200/70 dark:border-slate-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Equipo
-                        RouteGolem</h2>
-                    <p class="text-slate-600 dark:text-slate-300">Estudiantes de Ingeniería de Software comprometidos
-                        con la innovación y seguridad vial.</p>
+                    <h2 data-i18n="team_title"
+                        class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+                        RouteGolem Team
+                    </h2>
+                    <p data-i18n="team_subtitle" class="text-slate-600 dark:text-slate-300">
+                        Software Engineering students committed to school transport innovation and road safety.
+                    </p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Team Member 1 -->
-                    <div
-                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 text-center space-y-4">
+                    <article
+                        class="bg-white dark:bg-slate-800/90 p-6 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 text-center space-y-4 card-lift">
                         <img src="assets/images/team/mathias.jpg" alt="Mathias Marcelo De la Cruz De los Santos"
                             loading="lazy"
                             class="w-28 h-28 mx-auto rounded-full object-cover shadow-md border-2 border-blue-900/20">
                         <div>
                             <h3 class="font-bold text-slate-900 dark:text-white text-base">Mathias De la Cruz</h3>
-                            <p class="text-xs text-blue-900 dark:text-blue-400 font-medium mt-1">Ingeniería de Software
+                            <p data-i18n="team_career"
+                                class="text-xs text-blue-900 dark:text-blue-400 font-medium mt-1">Software Engineering
                             </p>
                         </div>
-                    </div>
+                    </article>
                     <!-- Team Member 2 -->
-                    <div
-                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 text-center space-y-4">
+                    <article
+                        class="bg-white dark:bg-slate-800/90 p-6 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 text-center space-y-4 card-lift">
                         <img src="assets/images/team/Manuel.jpeg" alt="Jhony Manuel Francia Torres" loading="lazy"
                             class="w-28 h-28 mx-auto rounded-full object-cover shadow-md border-2 border-blue-900/20">
                         <div>
                             <h3 class="font-bold text-slate-900 dark:text-white text-base">Jhony Manuel Francia</h3>
-                            <p class="text-xs text-blue-900 dark:text-blue-400 font-medium mt-1">Ingeniería de Software
+                            <p data-i18n="team_career"
+                                class="text-xs text-blue-900 dark:text-blue-400 font-medium mt-1">Software Engineering
                             </p>
                         </div>
-                    </div>
+                    </article>
                     <!-- Team Member 3 -->
-                    <div
-                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 text-center space-y-4">
+                    <article
+                        class="bg-white dark:bg-slate-800/90 p-6 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 text-center space-y-4 card-lift">
                         <img src="assets/images/team/marcelo.jpg" alt="Marcelo Fausto Pareja Calloapaza" loading="lazy"
                             class="w-28 h-28 mx-auto rounded-full object-cover shadow-md border-2 border-blue-900/20">
                         <div>
                             <h3 class="font-bold text-slate-900 dark:text-white text-base">Marcelo Pareja</h3>
-                            <p class="text-xs text-blue-900 dark:text-blue-400 font-medium mt-1">Ingeniería de Software
+                            <p data-i18n="team_career"
+                                class="text-xs text-blue-900 dark:text-blue-400 font-medium mt-1">Software Engineering
                             </p>
                         </div>
-                    </div>
+                    </article>
                     <!-- Team Member 4 -->
-                    <div
-                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 text-center space-y-4">
+                    <article
+                        class="bg-white dark:bg-slate-800/90 p-6 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 text-center space-y-4 card-lift">
                         <img src="assets/images/team/nickolas.png" alt="Nickolas Ramirez Ruiz" loading="lazy"
                             class="w-28 h-28 mx-auto rounded-full object-cover shadow-md border-2 border-blue-900/20">
                         <div>
                             <h3 class="font-bold text-slate-900 dark:text-white text-base">Nickolas Ramirez</h3>
-                            <p class="text-xs text-blue-900 dark:text-blue-400 font-medium mt-1">Ingeniería de Software
+                            <p data-i18n="team_career"
+                                class="text-xs text-blue-900 dark:text-blue-400 font-medium mt-1">Software Engineering
                             </p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -485,36 +708,98 @@
         <!-- Final CTA Section -->
         <section class="py-20 bg-blue-900 text-white text-center">
             <div class="max-w-4xl mx-auto px-4 space-y-6">
-                <h2 class="text-3xl sm:text-4xl font-bold">Transforma la seguridad del transporte escolar hoy</h2>
-                <p class="text-blue-200 max-w-xl mx-auto text-sm">Revisa el repositorio oficial en GitHub y conoce a
-                    detalle la documentación completa del proyecto.</p>
+                <h2 data-i18n="cta_title" class="text-3xl sm:text-4xl font-bold">
+                    Transform school transport safety today
+                </h2>
+                <p data-i18n="cta_desc" class="text-blue-200 max-w-xl mx-auto text-sm">
+                    Explore our official GitHub organization with complete documentation, Native &amp; Flutter mobile
+                    repositories, and CI/CD pipelines.
+                </p>
                 <a href="https://github.com/upc-pre-202620-1acc0238-4945-routegolem/routeguard-report" target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer" data-i18n="cta_button"
                     class="inline-block px-8 py-4 rounded-xl bg-emerald-500 text-white font-semibold hover:bg-emerald-600 transition-colors shadow-lg text-sm">
-                    Acceder al Repositorio
+                    Access Project Repository
                 </a>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-sm">
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 text-sm">
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <div>
                 <p class="font-bold text-white text-base">RouteGuard &copy; 2026</p>
-                <p class="text-xs mt-1 text-slate-400">Universidad Peruana de Ciencias Aplicadas (UPC) &bull;
-                    Aplicaciones para Dispositivos Móviles (NRC 4945)</p>
+                <p data-i18n="footer_course" class="text-xs mt-1 text-slate-400">
+                    Universidad Peruana de Ciencias Aplicadas (UPC) &bull; Mobile Application Development (NRC 4945)
+                </p>
             </div>
-            <div class="flex gap-6 text-sm">
-                <a href="#problem" class="hover:text-white transition-colors">Problema</a>
-                <a href="#solution" class="hover:text-white transition-colors">Solución</a>
-                <a href="#team" class="hover:text-white transition-colors">Equipo</a>
-                <a href="https://github.com/upc-pre-202620-1acc0238-4945-routegolem/routeguard-report" target="_blank"
+            <nav aria-label="Footer navigation" class="flex flex-wrap justify-center gap-6 text-sm">
+                <a href="#problem" data-i18n="nav_problem" class="hover:text-white transition-colors">Problem</a>
+                <a href="#solution" data-i18n="nav_solution" class="hover:text-white transition-colors">Solution</a>
+                <a href="#team" data-i18n="nav_team" class="hover:text-white transition-colors">Team</a>
+                <button id="terms-open" type="button" data-i18n="footer_terms"
+                    class="hover:text-white transition-colors underline underline-offset-4">
+                    Terms &amp; Conditions
+                </button>
+                <a href="https://github.com/upc-pre-202620-1acc0238-4945-routegolem" target="_blank"
                     rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub</a>
-            </div>
+            </nav>
         </div>
     </footer>
+
+    <!-- Terms & Conditions of Service Modal (Ethics & Responsibility) -->
+    <div id="terms-modal" role="dialog" aria-modal="true" aria-labelledby="terms-modal-title"
+        class="hidden fixed inset-0 z-[100] bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div
+            class="bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 max-w-2xl w-full rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 p-6 sm:p-8 space-y-5 max-h-[85vh] overflow-y-auto">
+            <div class="flex items-start justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <h2 id="terms-modal-title" data-i18n="terms_title"
+                    class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                    Terms &amp; Conditions of Service
+                </h2>
+                <button id="terms-close" type="button" aria-label="Close terms modal"
+                    class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                    ✕
+                </button>
+            </div>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p data-i18n="terms_intro">
+                    RouteGuard operates under strict ethical and professional responsibility principles aligned with the
+                    ACM/IEEE Software Engineering Code of Ethics and the Colegio de Ingenieros del Perú (CIP).
+                </p>
+                <h3 data-i18n="terms_h1" class="font-semibold text-slate-900 dark:text-white">
+                    1. Child Safety &amp; Geolocation Data Privacy
+                </h3>
+                <p data-i18n="terms_p1">
+                    Real-time GPS telemetry and boarding records are processed exclusively for authorized guardians,
+                    caregivers, assigned drivers, and fleet administrators. Location history is encrypted in transit via
+                    HTTPS and never shared with unauthorized third parties.
+                </p>
+                <h3 data-i18n="terms_h2" class="font-semibold text-slate-900 dark:text-white">
+                    2. Authorized Pickup &amp; Accountability
+                </h3>
+                <p data-i18n="terms_p2">
+                    Fleet administrators and parents are responsible for keeping the authorized caregiver network up to
+                    date. Drivers must prioritize road safety by using hands-free boarding workflows and avoiding
+                    manual device manipulation while driving.
+                </p>
+                <h3 data-i18n="terms_h3" class="font-semibold text-slate-900 dark:text-white">
+                    3. Subscriptions &amp; Academic Scope
+                </h3>
+                <p data-i18n="terms_p3">
+                    Service plans (Basic S/ 49.99, Intermediate S/ 99.99, Complete S/ 179.99) operate via Stripe test
+                    mode integration for educational demonstration within course 1ACC0238 at UPC.
+                </p>
+            </div>
+            <div class="pt-2 flex justify-end border-t border-slate-200 dark:border-slate-800">
+                <button id="terms-accept" type="button" data-i18n="terms_close_btn"
+                    class="px-6 py-2.5 rounded-xl bg-blue-900 text-white font-semibold text-sm hover:bg-blue-800 transition-colors">
+                    Understood
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Script File -->
     <script src="assets/script.js"></script>
